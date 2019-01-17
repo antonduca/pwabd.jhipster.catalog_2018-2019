@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-disciplina-heading" jhiTranslate="catalogApp.disciplina.home.createOrEditLabel">Create or edit a Disciplina</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!disciplina.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="disciplina.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.disciplina.denumire" for="field_denumire">Denumire</label>
+                    <input type="text" class="form-control" name="denumire" id="field_denumire"
+                        [(ngModel)]="disciplina.denumire" required maxlength="15"/>
+                    <div [hidden]="!(editForm.controls.denumire?.dirty && editForm.controls.denumire?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.denumire?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.denumire?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.disciplina.descriere" for="field_descriere">Descriere</label>
+                    <input type="text" class="form-control" name="descriere" id="field_descriere"
+                        [(ngModel)]="disciplina.descriere" required minlength="30"/>
+                    <div [hidden]="!(editForm.controls.descriere?.dirty && editForm.controls.descriere?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.descriere?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.descriere?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 30 }">
+                        This field is required to be at least 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.disciplina.puncteCredit" for="field_puncteCredit">Puncte Credit</label>
+                    <input type="number" class="form-control" name="puncteCredit" id="field_puncteCredit"
+                        [(ngModel)]="disciplina.puncteCredit" required min="2" jhiMin="2" max="6" jhiMax="6"/>
+                    <div [hidden]="!(editForm.controls.puncteCredit?.dirty && editForm.controls.puncteCredit?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.puncteCredit?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.puncteCredit?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 2 }">
+                            This field should be at least 2.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.puncteCredit?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 6 }">
+                            This field cannot be more than 6.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.puncteCredit?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.disciplina.anDeStudiu" for="field_anDeStudiu">An De Studiu</label>
+                    <input type="number" class="form-control" name="anDeStudiu" id="field_anDeStudiu"
+                        [(ngModel)]="disciplina.anDeStudiu" required min="1" jhiMin="1" max="4" jhiMax="4"/>
+                    <div [hidden]="!(editForm.controls.anDeStudiu?.dirty && editForm.controls.anDeStudiu?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.anDeStudiu?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.anDeStudiu?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.anDeStudiu?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 4 }">
+                            This field cannot be more than 4.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.anDeStudiu?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

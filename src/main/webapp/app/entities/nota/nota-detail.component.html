@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="nota">
+            <h2><span jhiTranslate="catalogApp.nota.detail.title">Nota</span> {{nota.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="catalogApp.nota.numarPuncte">Numar Puncte</span></dt>
+                <dd>
+                    <span>{{nota.numarPuncte}}</span>
+                </dd>
+                <dt><span jhiTranslate="catalogApp.nota.nota">Nota</span></dt>
+                <dd>
+                    <span>{{nota.nota}}</span>
+                </dd>
+                <dt><span jhiTranslate="catalogApp.nota.data">Data</span></dt>
+                <dd>
+                    <span>{{nota.data}}</span>
+                </dd>
+                <dt><span jhiTranslate="catalogApp.nota.user">User</span></dt>
+                <dd>
+                    {{nota.user?.login}}
+                </dd>
+                <dt><span jhiTranslate="catalogApp.nota.disciplina">Disciplina</span></dt>
+                <dd>
+                    <div *ngIf="nota.disciplina">
+                        <a [routerLink]="['/disciplina', nota.disciplina?.id, 'view']">{{nota.disciplina?.denumire}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/nota', nota.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

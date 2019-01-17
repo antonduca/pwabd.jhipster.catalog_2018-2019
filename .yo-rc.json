@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "pwabd",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.7.2",
+    "applicationType": "monolith",
+    "baseName": "catalog",
+    "packageName": "pwabd",
+    "packageFolder": "pwabd",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTRkZWU4YjEzNzU2NWZkYmFhYmIwMmNiZDNjZTk4ODk0Mjc2OGM2ZmU0OWRmMzM5ZTUzYjIxOTU3MWM5MjkxOTM0NGVlOTU4NWIwZmE1ODJlZDliNDE0NjZhODAxODQ0M2FmNDI4ODZkNTBhN2YwMmViNGFkYTg1YTMxMzEwODk=",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "ro"
+    ]
+  }
+}

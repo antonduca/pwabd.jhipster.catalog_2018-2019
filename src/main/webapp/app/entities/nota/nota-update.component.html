@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-nota-heading" jhiTranslate="catalogApp.nota.home.createOrEditLabel">Create or edit a Nota</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!nota.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="nota.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.nota.numarPuncte" for="field_numarPuncte">Numar Puncte</label>
+                    <input type="number" class="form-control" name="numarPuncte" id="field_numarPuncte"
+                        [(ngModel)]="nota.numarPuncte" required min="1" jhiMin="1" max="100" jhiMax="100"/>
+                    <div [hidden]="!(editForm.controls.numarPuncte?.dirty && editForm.controls.numarPuncte?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numarPuncte?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.numarPuncte?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.numarPuncte?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 100 }">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.numarPuncte?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.nota.nota" for="field_nota">Nota</label>
+                    <input type="number" class="form-control" name="nota" id="field_nota"
+                        [(ngModel)]="nota.nota" required min="1" jhiMin="1" max="10" jhiMax="10"/>
+                    <div [hidden]="!(editForm.controls.nota?.dirty && editForm.controls.nota?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nota?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nota?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nota?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 10 }">
+                            This field cannot be more than 10.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nota?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.nota.data" for="field_data">Data</label>
+                    <div class="d-flex">
+                        <input id="field_data" type="datetime-local" class="form-control" name="data" [(ngModel)]="data"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.data?.dirty && editForm.controls.data?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.data?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.data?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.nota.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="nota.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === nota.user?.id ? nota.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="catalogApp.nota.disciplina" for="field_disciplina">Disciplina</label>
+                    <select class="form-control" id="field_disciplina" name="disciplina" [(ngModel)]="nota.disciplina" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="disciplinaOption.id === nota.disciplina?.id ? nota.disciplina : disciplinaOption" *ngFor="let disciplinaOption of disciplinas; trackBy: trackDisciplinaById">{{disciplinaOption.denumire}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

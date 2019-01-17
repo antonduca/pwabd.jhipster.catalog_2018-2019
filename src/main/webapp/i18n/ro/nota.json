@@ -1,0 +1,25 @@
+{
+    "catalogApp": {
+        "nota": {
+            "home": {
+                "title": "Notas",
+                "createLabel": "Creeare o nouă entitate Nota",
+                "createOrEditLabel": "Creeare sau editare Nota"
+            },
+            "created": "A fost creată o nouă entitate Nota cu identificatorul {{ param }}",
+            "updated": "Nota cu identificatorul {{ param }} a fost actualizată",
+            "deleted": "Nota cu identificatorul {{ param }} a fost ștearsă",
+            "delete": {
+                "question": "Sunteți sigur că doriți să ștergeți Nota {{ id }}?"
+            },
+            "detail": {
+                "title": "Nota"
+            },
+            "numarPuncte": "Numar Puncte",
+            "nota": "Nota",
+            "data": "Data",
+            "user": "User",
+            "disciplina": "Disciplina"
+        }
+    }
+}

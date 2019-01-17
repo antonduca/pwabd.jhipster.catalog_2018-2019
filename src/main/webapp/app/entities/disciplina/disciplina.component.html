@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="catalogApp.disciplina.home.title">Discipline</span>
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-disciplina" [routerLink]="['/disciplina/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="catalogApp.disciplina.home.createLabel">
+            Create new Disciplina
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="disciplinas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="denumire"><span jhiTranslate="catalogApp.disciplina.denumire">Denumire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descriere"><span jhiTranslate="catalogApp.disciplina.descriere">Descriere</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="puncteCredit"><span jhiTranslate="catalogApp.disciplina.puncteCredit">Puncte Credit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="anDeStudiu"><span jhiTranslate="catalogApp.disciplina.anDeStudiu">An De Studiu</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let disciplina of disciplinas ;trackBy: trackId">
+                <td><a [routerLink]="['/disciplina', disciplina.id, 'view' ]">{{disciplina.id}}</a></td>
+                <td>{{disciplina.denumire}}</td>
+                <td>{{disciplina.descriere}}</td>
+                <td>{{disciplina.puncteCredit}}</td>
+                <td>{{disciplina.anDeStudiu}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/disciplina', disciplina.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit"
+                                [routerLink]="['/disciplina', disciplina.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'disciplina/'+ disciplina.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

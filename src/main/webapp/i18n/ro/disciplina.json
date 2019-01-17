@@ -1,0 +1,24 @@
+{
+    "catalogApp": {
+        "disciplina": {
+            "home": {
+                "title": "Disciplinas",
+                "createLabel": "Creeare o nouă entitate Disciplina",
+                "createOrEditLabel": "Creeare sau editare Disciplina"
+            },
+            "created": "A fost creată o nouă entitate Disciplina cu identificatorul {{ param }}",
+            "updated": "Disciplina cu identificatorul {{ param }} a fost actualizată",
+            "deleted": "Disciplina cu identificatorul {{ param }} a fost ștearsă",
+            "delete": {
+                "question": "Sunteți sigur că doriți să ștergeți Disciplina {{ id }}?"
+            },
+            "detail": {
+                "title": "Disciplina"
+            },
+            "denumire": "Denumire",
+            "descriere": "Descriere",
+            "puncteCredit": "Puncte Credit",
+            "anDeStudiu": "An De Studiu"
+        }
+    }
+}

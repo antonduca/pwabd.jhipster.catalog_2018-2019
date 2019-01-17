@@ -1,0 +1,25 @@
+entity Disciplina {
+	denumire String required maxlength(15),
+	descriere String required minlength(30),
+	puncteCredit Integer required min(2) max(6),
+	anDeStudiu Integer required min(1) max(4)
+}
+
+entity Nota{
+    numarPuncte Integer required min(1) max(100),
+    nota Integer required min(1) max(10),
+    data Instant required
+}
+
+relationship ManyToOne {
+    Nota {User(login)} to User,
+    Nota {disciplina(denumire)} to Disciplina
+}
+
+/*
+relationship OneToMany {
+    User {note} to Nota
+}
+*/
+
+paginate * with infinite-scroll

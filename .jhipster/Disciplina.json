@@ -1,0 +1,55 @@
+{
+    "name": "Disciplina",
+    "fields": [
+        {
+            "fieldName": "denumire",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 15
+        },
+        {
+            "fieldName": "descriere",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 30
+        },
+        {
+            "fieldName": "puncteCredit",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 2,
+            "fieldValidateRulesMax": 6
+        },
+        {
+            "fieldName": "anDeStudiu",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 1,
+            "fieldValidateRulesMax": 4
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190113170635",
+    "entityTableName": "disciplina",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
