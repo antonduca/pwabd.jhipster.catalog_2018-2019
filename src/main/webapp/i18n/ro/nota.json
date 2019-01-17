@@ -2,7 +2,7 @@
     "catalogApp": {
         "nota": {
             "home": {
-                "title": "Notas",
+                "title": "Note",
                 "createLabel": "Creeare o nouă entitate Nota",
                 "createOrEditLabel": "Creeare sau editare Nota"
             },

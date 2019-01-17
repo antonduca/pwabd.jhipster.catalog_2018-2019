@@ -2,7 +2,7 @@
     "catalogApp": {
         "nota": {
             "home": {
-                "title": "Notas",
+                "title": "Grades",
                 "createLabel": "Create a new Nota",
                 "createOrEditLabel": "Create or edit a Nota"
             },
